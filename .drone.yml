@@ -6,4 +6,5 @@ name: default
 steps:
 - name: hello_world
   image: busybox:latest
-  commands: echo 'Hello World'
+  commands: echo Hello World && ls -la
+
