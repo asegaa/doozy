@@ -6,7 +6,6 @@ name: default
 steps:
 - name: docker  
   image: plugins/docker
-  tags: 42
-  dockerfile: Dockerfile
-
-
+  settings:
+    tags: 42:latest
+    dockerfile: Dockerfile
