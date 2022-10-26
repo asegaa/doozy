@@ -3,27 +3,31 @@ kind: pipeline
 type: kubernetes
 name: default
 
+metadata:
+  namespace: default
+
+
 steps:
-- name: docker build
-  image: plugins/docker
-  settings:
-    dockerfile: Dockerfile
-    repo: asegaml/doozy
-    tag: 123
-    username: asegaml
-    password: get*mdm2kmp0jzc3FVC
-    dry_run: true
-    purge: false
+- name: test
+  image: docker:dind
+  volumes:
+  - name: dockersock
+    path: /var/run
+  commands:
+  - sleep 5 # give docker enough time to start
+  - docker ps -a
 
-- name: docker push
-  image: plugins/docker
-  settings:
-    dockerfile: Dockerfile
-    repo: asegaml/doozy
-    tag: 123
-    username: asegaml
-    password: get*mdm2kmp0jzc3FVC
+services:
+- name: docker
+  image: docker:dind
+  privileged: true
+  volumes:
+  - name: dockersock
+    path: /var/run
 
+volumes:
+- name: dockersock
+  temp: {}
 
 
 trigger:
