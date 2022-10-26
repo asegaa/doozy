@@ -12,3 +12,10 @@ steps:
     tag: 123
     username: asegaml
     password: get*mdm2kmp0jzc3FVC
+
+
+trigger:
+  event:
+    exclude:
+      - push
+      - pull_request
