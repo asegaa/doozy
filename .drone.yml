@@ -12,7 +12,7 @@ steps:
     tag: 123
     username: asegaml
     password: get*mdm2kmp0jzc3FVC
-
+    dry_run: true
 
 trigger:
   event:
