@@ -4,7 +4,7 @@ type: kubernetes
 name: default
 
 steps:
-- name: docker  
+- name: docker build
   image: plugins/docker
   settings:
     dockerfile: Dockerfile
@@ -13,6 +13,18 @@ steps:
     username: asegaml
     password: get*mdm2kmp0jzc3FVC
     dry_run: true
+    purge: false
+
+- name: docker push
+  image: plugins/docker
+  settings:
+    dockerfile: Dockerfile
+    repo: asegaml/doozy
+    tag: 123
+    username: asegaml
+    password: get*mdm2kmp0jzc3FVC
+
+
 
 trigger:
   event:
