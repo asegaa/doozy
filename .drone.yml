@@ -4,9 +4,9 @@ type: kubernetes
 name: default
 
 steps:
-- name: hello_world
-  image: busybox:latest
-  commands:
-  - echo Hello World
+- name: docker  
+  image: plugins/docker
+  tags: 42
+  dockerfile: Dockerfile
 
 
